@@ -1,0 +1,31 @@
+cmake_minimum_required(VERSION 3.0.2)
+project(limo_lane)
+
+## Catkin 설정
+find_package(catkin REQUIRED COMPONENTS
+  roscpp
+  rospy
+  std_msgs
+  sensor_msgs
+  cv_bridge
+  image_transport
+)
+
+catkin_package()
+
+## include 디렉터리 (필요하면)
+include_directories(
+  ${catkin_INCLUDE_DIRS}
+)
+
+## Python 노드 설치
+catkin_install_python(PROGRAMS
+  scripts/camera_viewer.py
+  scripts/blend_line_node.py
+  scripts/binary_line_node.py
+  scripts/bird_eye_node.py
+  scripts/sliding_window_node.py
+  scripts/calc_curvature_node.py
+  scripts/calc_vehicle_offset_node.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)

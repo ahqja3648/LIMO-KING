@@ -1,0 +1,14 @@
+<launch>
+  <node pkg="camera_viewer"
+        type="limo_camera_view.py"
+        name="limo_camera_view"
+        output="screen"/>
+        <!-- 
+    참고:
+    - pkg: 패키지 이름
+    - type: 실행할 파이썬 파일 이름
+    - name: 노드 이름 (rosnode list에 표시됨)
+    - output: 로그를 터미널로 출력하도록 설정
+  -->
+</launch>
+

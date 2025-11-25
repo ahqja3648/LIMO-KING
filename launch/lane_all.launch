@@ -1,0 +1,44 @@
+<launch>
+  <!-- 1. 카메라 뷰어 (센서 확인용) -->
+  <node pkg="limo_lane"
+        type="camera_viewer.py"
+        name="camera_viewer"
+        output="screen" />
+
+  <!-- 2. 컬러 기반 블렌드(노란/흰 차선) + Warp -->
+  <node pkg="limo_lane"
+        type="blend_line_node.py"
+        name="blend_line_node"
+        output="screen" />
+
+  <!-- 3. 컬러 검출 + Warp + 이진화 -->
+  <node pkg="limo_lane"
+        type="binary_line_node.py"
+        name="binary_line_node"
+        output="screen" />
+
+  <!-- 4. 버드아이 뷰 전용 노드 -->
+  <node pkg="limo_lane"
+        type="bird_eye_node.py"
+        name="bird_eye_node"
+        output="screen" />
+
+  <!-- 5. 슬라이딩 윈도우 (자체적으로 color detect + warp + binary 수행) -->
+  <node pkg="limo_lane"
+        type="sliding_window_node.py"
+        name="sliding_window_node"
+        output="screen" />
+
+  <!-- 6. 곡률 계산 노드 (자체적으로 color detect + warp + binary + sliding window 수행) -->
+  <node pkg="limo_lane"
+        type="calc_curvature_node.py"
+        name="calc_curvature_node"
+        output="screen" />
+
+  <!-- 7. 차량 중앙 오프셋 계산 노드 (자체적으로 color detect + warp + binary + sliding window 수행) -->
+  <node pkg="limo_lane"
+        type="calc_vehicle_offset_node.py"
+        name="calc_vehicle_offset_node"
+        output="screen" />
+
+</launch>
